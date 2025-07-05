@@ -4,29 +4,15 @@ import React from "react";
 const NavBar = () => {
   return (
     <>
-      <header className="flex fixed w-full justify-around items-center py-5">
+      <section className="flex lg:hidden fixed w-full bottom-0 border-t-2 px-3 py-4">
         <nav>
-          <Link href={`/`} className="text-2xl font-semibold">
-            GymBro
-          </Link>
-        </nav>
-        <nav>
-          <ul className="flex gap-5 font-bold">
+          <ul>
             <li>
-              <Link href={"/"}>Beranda</Link>
-            </li>
-            <li>
-              <Link href={"/rute"}>Jalan</Link>
-            </li>
-            <li>
-              <Link href={"/kalkulator"}>Kalkulator</Link>
-            </li>
-            <li>
-              <Link href={"/pengaturan"}>Pengaturan</Link>
+              <Link href={`/`}>Test</Link>
             </li>
           </ul>
         </nav>
-      </header>
+      </section>
     </>
   );
 };

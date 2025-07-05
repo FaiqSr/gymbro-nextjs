@@ -21,10 +21,10 @@ export default function RootLayout({
     <html className="scroll-smooth transition-colors" suppressHydrationWarning>
       <body className="bg-slate-50">
         <ThemesProvider>
-          {/* <NavBar /> */}
           <ThemeToggle />
           <MessageButton />
           <main className="flex w-full">
+            <NavBar />
             <SideBar />
             {children}
           </main>
