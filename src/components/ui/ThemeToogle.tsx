@@ -15,9 +15,9 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="fixed bottom-10 right-10 border rounded-full p-3 hover:cursor-pointer"
+      className="fixed bottom-10 right-10 border rounded-full p-2 hover:cursor-pointer"
     >
-      {theme === "dark" ? <CiLight size={40} /> : <CiDark size={40} />}
+      {theme === "dark" ? <CiLight /> : <CiDark />}
     </button>
   );
 }
