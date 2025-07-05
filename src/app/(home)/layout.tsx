@@ -1,9 +1,11 @@
-import NavBar from "@/components/layout/NavBar";
+// import NavBar from "@/components/layout/NavBar";
 import { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/ui/ThemeToogle";
 import MessageButton from "@/components/ui/MessageButton";
+import SideBar from "@/components/layout/SideBar";
+import NavBar from "@/components/layout/NavBar";
+import ThemesProvider from "@/components/providers/ThemesProvider";
 
 export const metadata: Metadata = {
   title: "GymBro",
@@ -16,14 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
-      <body>
-        <ThemeProvider>
-          <NavBar />
+    <html className="scroll-smooth transition-colors" suppressHydrationWarning>
+      <body className="bg-slate-50">
+        <ThemesProvider>
+          {/* <NavBar /> */}
           <ThemeToggle />
           <MessageButton />
-          <main className="py-20">{children}</main>
-        </ThemeProvider>
+          <main className="flex w-full">
+            <SideBar />
+            {children}
+          </main>
+        </ThemesProvider>
       </body>
     </html>
   );

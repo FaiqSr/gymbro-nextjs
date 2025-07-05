@@ -1,28 +1,22 @@
 "use client";
-
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  attribute?: "class" | "data-theme";
-  defaultTheme?: string;
 }
 
-const ThemeProvider = ({
-  children,
-  attribute = "class",
-  defaultTheme = "system",
-}: Props) => {
+const ThemesProvider = ({ children }: Props) => {
   return (
     <NextThemesProvider
-      attribute={attribute}
-      defaultTheme={defaultTheme}
+      attribute="class"
+      defaultTheme="system"
       enableSystem
+      disableTransitionOnChange
     >
       {children}
     </NextThemesProvider>
   );
 };
 
-export default ThemeProvider;
+export default ThemesProvider;

@@ -1,5 +1,4 @@
 "use client";
-
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { CiDark, CiLight } from "react-icons/ci";
@@ -15,7 +14,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="fixed bottom-10 right-10 border rounded-full p-2 hover:cursor-pointer"
+      className="fixed bottom-5 right-5 border rounded-full p-2 hover:cursor-pointer"
     >
       {theme === "dark" ? <CiLight /> : <CiDark />}
     </button>
