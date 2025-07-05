@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/ui/ThemeToogle";
+import MessageButton from "@/components/ui/MessageButton";
 
 export const metadata: Metadata = {
   title: "GymBro",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavBar />
           <ThemeToggle />
+          <MessageButton />
           <main className="py-20">{children}</main>
         </ThemeProvider>
       </body>
