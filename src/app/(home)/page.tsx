@@ -1,7 +1,12 @@
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
-  return <div className="w-full">{/* tampilan utam disini iq */}</div>;
+  return (
+    <>
+      <Link href={"/latihan"}>Mulai latihan</Link>
+    </>
+  );
 };
 
 export default page;
