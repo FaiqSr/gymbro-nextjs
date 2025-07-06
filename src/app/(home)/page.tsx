@@ -1,12 +1,7 @@
-import Date from "@/components/home/Date";
 import React from "react";
 
 const page = () => {
-  return (
-    <div className="w-full">
-      <Date />
-    </div>
-  );
+  return <div className="w-full">{/* tampilan utam disini iq */}</div>;
 };
 
 export default page;
