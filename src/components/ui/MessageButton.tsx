@@ -14,9 +14,9 @@ const MessageButton = () => {
   return (
     <button
       onClick={() => console.log("hehe")}
-      className="fixed bottom-5 right-15 p-2 border rounded-full hover:cursor-pointer"
+      className="fixed bottom-35 lg:bottom-5 right-20 p-2 border-2 rounded-full hover:cursor-pointer"
     >
-      <FiMessageCircle />
+      <FiMessageCircle size={30} />
     </button>
   );
 };
