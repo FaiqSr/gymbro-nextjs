@@ -18,11 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth transition-colors" suppressHydrationWarning>
-      <body className="bg-slate-50">
+    <html className="scroll-smooth" suppressHydrationWarning>
+      <body className="bg-slate-50 dark:bg-slate-800 transition-colors ease-in-out duration-500">
         <ThemesProvider>
           <ThemeToggle />
-          <MessageButton />
+          {/* <MessageButton /> */}
           <main className="flex w-full">
             <NavBar />
             <SideBar />
