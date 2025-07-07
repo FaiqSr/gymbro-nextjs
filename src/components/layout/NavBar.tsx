@@ -3,20 +3,13 @@ import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 import React from "react";
-import {
-  MdFitnessCenter,
-  MdChat,
-  MdCalculate,
-  MdAccountCircle,
-} from "react-icons/md";
+import { MdFitnessCenter, MdChat, MdCalculate, MdAccountCircle } from "react-icons/md";
 
 const NavBar = () => {
   const param = usePathname();
 
   function checkRequest(path: string) {
-    return path == param
-      ? "border-2 rounded-xl border-blue-500 text-blue-400 transition-colors duration-300 ease-in-out"
-      : "dark:text-slate-500 transition-colors duration-300 ease-in-out";
+    return path == param ? "border-2 rounded-xl border-blue-500 text-blue-400 transition-colors duration-300 ease-in-out" : "dark:text-slate-500 transition-colors duration-300 ease-in-out";
   }
 
   return (
@@ -34,9 +27,7 @@ const NavBar = () => {
                 <MdChat size={50} />
               </Link>
             </li>
-            <li
-              className={`${checkRequest("/kalkulator")} flex items-center p-2`}
-            >
+            <li className={`${checkRequest("/kalkulator")} flex items-center p-2`}>
               <Link href={`/kalkulator`}>
                 <MdCalculate size={50} />
               </Link>
