@@ -12,14 +12,10 @@ export const metadata: Metadata = {
   description: "Website untuk membantu anda tetap bugar",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className="scroll-smooth" suppressHydrationWarning>
-      <body className="bg-slate-50 dark:bg-slate-800 transition-colors ease-in-out duration-500">
+      <body className="transition-colors ease-in-out duration-500">
         <ThemesProvider>
           <ThemeToggle />
           {/* <MessageButton /> */}

@@ -1,7 +1,8 @@
 import React from "react";
+import MainBackground from "@/components/ui/MainBackground";
 
 const page = () => {
-  return <div>page</div>;
+  return <MainBackground />;
 };
 
 export default page;
