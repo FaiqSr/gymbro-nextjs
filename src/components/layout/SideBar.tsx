@@ -5,6 +5,9 @@ import React from "react";
 import { MdFitnessCenter, MdChat, MdCalculate, MdAccountCircle } from "react-icons/md";
 import { Concert_One } from "next/font/google";
 import { usePathname } from "next/navigation";
+import { AiOutlineLogout } from "react-icons/ai";
+import { RxAvatar } from "react-icons/rx";
+import { profile } from "console";
 
 const concertOne = Concert_One({ weight: "400" });
 
@@ -16,35 +19,40 @@ const SideBar = () => {
   };
 
   return (
-    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-10 items-center min-h-svh px-5 border-r-1 dark:border-red-500 dark:bg-hitam`}>
+    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-1 dark:border-red-900 dark:bg-hitam`}>
       <section>
-        <nav className={`py-5`}>
-          <Link href={`/`} className={`font-bold text-3xl `}>
-            <img src="/logo.png" alt="Logo" />
+        <nav>
+          <Link href={`/`}>
+            <img src="/logo.png" alt="Logo" className="pr-4" width={140} height={200} />
           </Link>
         </nav>
       </section>
       <section className="w-full">
-        <nav>
-          <ul className={`flex flex-col gap-4 font-semibold text-xl dark:text-white ${concertOne.className}`}>
+        <nav className="">
+          <ul className={`flex flex-col gap-5 font-semibold text-lg dark:text-white ${concertOne.className}`}>
             <li className={`${getBorderColor("/latihan")} pl-2 pr-10 py-3 hover:cursor-pointer `}>
-              <Link href={`/latihan`} className={`flex gap-2 items-center `}>
-                <MdFitnessCenter size={20} className="dark:text-coklat" /> LATIHAN
+              <Link href={`/latihan`} className={`flex gap-4 items-center `}>
+                <MdFitnessCenter size={24} className="dark:text-coklat" /> LATIHAN
               </Link>
             </li>
             <li className={`${getBorderColor("/chatbot")} pl-2 pr-10 py-3 hover:cursor-pointer`}>
-              <Link href={`/chatbot`} className={`flex gap-2 items-center`}>
-                <MdChat size={20} className="dark:text-coklat" /> CHATBOT
+              <Link href={`/chatbot`} className={`flex gap-4 items-center`}>
+                <MdChat size={24} className="dark:text-coklat" /> CHATBOT
               </Link>
             </li>
             <li className={`${getBorderColor("/kalkulator")} pl-2 pr-10 py-3 hover:cursor-pointer`}>
-              <Link href={`/kalkulator`} className={`flex gap-2 items-center`}>
-                <MdCalculate size={20} className="dark:text-coklat " /> KALKULATOR
+              <Link href={`/kalkulator`} className={`flex gap-4 items-center`}>
+                <MdCalculate size={24} className="dark:text-coklat " /> KALKULATOR
               </Link>
             </li>
-            <li className={`${getBorderColor("/profile")} pl-2 pr-10 py-3 hover:cursor-pointer`}>
-              <Link href={`/profile`} className={`flex gap-2 items-center`}>
-                <MdAccountCircle size={20} className="dark:text-coklat" /> PROFILE
+            <li className={`${getBorderColor("/profile")} flex justify-center hover:cursor-pointer`}>
+              <Link href={`/profile`} className={``}>
+                <MdAccountCircle size={84} className="dark:text-coklat text-center" /> PROFILE
+              </Link>
+            </li>
+            <li className="pl-2 hover:cursor-pointer mt-28">
+              <Link href={`/login`} className={`flex gap-4 items-center`}>
+                <AiOutlineLogout size={24} className="dark:text-coklat" /> LOGOUT
               </Link>
             </li>
           </ul>
