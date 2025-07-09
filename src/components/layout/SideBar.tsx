@@ -24,7 +24,7 @@ const SideBar = () => {
   };
 
   return (
-    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900 bg-hitam/20 dark:bg-[url(/images/gymBg.png)] `}>
+    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900 dark:border-slate-200 bg-hitam/20 dark:bg-[url(/images/gymBg.png)]`}>
       <section>
         <nav>
           <Link href={`/`}>
