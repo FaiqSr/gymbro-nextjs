@@ -1,7 +1,8 @@
+import MainBackground from "@/components/ui/MainBackground";
 import React from "react";
 
 const page = () => {
-  return <div>Kalkulator</div>;
+  return <MainBackground />;
 };
 
 export default page;

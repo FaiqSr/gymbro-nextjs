@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { AiOutlineLogout } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { profile } from "console";
+import path from "path";
 
 const concertOne = Concert_One({ weight: "400" });
 
@@ -18,8 +19,12 @@ const SideBar = () => {
     return pathname === path ? "rounded-md bg-abu/20 pl-2 pr-10 py-2 shadow-xl/40 border-1 dark:shadow-coklat dark:text-white" : "border-white";
   };
 
+  const borderColorprofile = (path: string) => {
+    return pathname === path ? "rounded-full bg-abu/20  shadow-xl/40 border-1 dark:shadow-coklat dark:text-white" : "border-white";
+  };
+
   return (
-    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-1 dark:border-red-900 dark:bg-hitam`}>
+    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900 dark:border-slate-200 bg-hitam/20 dark:bg-[url(/images/gymBg.png)]`}>
       <section>
         <nav>
           <Link href={`/`}>
@@ -45,12 +50,12 @@ const SideBar = () => {
                 <MdCalculate size={24} className="dark:text-coklat " /> KALKULATOR
               </Link>
             </li>
-            <li className={`${getBorderColor("/profile")} flex justify-center hover:cursor-pointer`}>
+            <li className={`${borderColorprofile("/profile")} flex flex-col items-center hover:cursor-pointer`}>
               <Link href={`/profile`} className={``}>
-                <MdAccountCircle size={84} className="dark:text-coklat text-center" /> PROFILE
+                <MdAccountCircle size={65} className="dark:text-coklat" /> PROFILE
               </Link>
             </li>
-            <li className="pl-2 hover:cursor-pointer mt-28">
+            <li className="pl-2 pr-10 mt-28 hover:cursor-pointer active:bg-orange-900 active:rounded-2xl">
               <Link href={`/login`} className={`flex gap-4 items-center`}>
                 <AiOutlineLogout size={24} className="dark:text-coklat" /> LOGOUT
               </Link>
