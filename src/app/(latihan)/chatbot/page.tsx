@@ -1,5 +1,5 @@
 import ChatBotPage from "@/components/latihan/ChatBotPage";
-import React, { useState } from "react";
+import React from "react";
 
 const Page = () => {
   return (
