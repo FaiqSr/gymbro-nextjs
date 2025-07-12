@@ -24,11 +24,11 @@ const SideBar = () => {
   };
 
   return (
-    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900 dark:border-slate-200 bg-hitam/20 dark:bg-[url(/images/gymBg.png)]`}>
+    <aside className={`min-w-64 max-w-64 hidden lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900  bg-[url(/Ellipse.png)] bg-no-repeat bg-top-left dark:bg-merahhitam`}>
       <section>
         <nav>
           <Link href={`/`}>
-            <img src="/logo.png" alt="Logo" className="pr-4" width={140} height={200} />
+            <img src="/Group.png" alt="Logo" className="pr-4" width={140} height={200} />
           </Link>
         </nav>
       </section>
