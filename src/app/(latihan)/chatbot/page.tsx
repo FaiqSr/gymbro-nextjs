@@ -1,18 +1,29 @@
-import MainBackground from "@/components/ui/MainBackground";
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { GrAdd } from "react-icons/gr";
+import { FaBars } from "react-icons/fa";
+import { IoMdExit } from "react-icons/io";
+import { PiNotePencil } from "react-icons/pi";
+import { VscHistory } from "react-icons/vsc";
+import { MdContentPasteSearch } from "react-icons/md";
 
-const page = () => {
+const Page = () => {
+  const [isSidebarRightOpen, setIsSidebarRightOpen] = useState(true);
+  const toggleSidebar = () => setIsSidebarRightOpen(!isSidebarRightOpen);
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return (
     <>
-      <section className="flex justify-center bg-gradient-to-br from-red-700 via-black to-red-700">
-        <div className="text-center  max-w-4xl w-full ">
-          <div className="mb-5">
+      <section className="flex h-screen dark:bg-gradient-to-br dark:from-red-700 dark:via-black dark:to-red-700 ">
+        <div className={`text-center p-4 relativ ${isSidebarRightOpen ? "max-w-4xl" : " w-[896px]"}  mx-auto`}>
+          <div className="mb-5 mt-2">
             <img src="/logo.png" alt="logo" className="mx-auto" width={155} />
             <h1 className="text-4xl font-bold text-red-500 drop-shadow-[0_0_6px_rgba(255,100,100,0.8)]">Selamat Datang</h1>
             <p className="py-3 font-semibold">Tanyakan apa saja mengenai latihan Gym sekarang!</p>
           </div>
-          <div className="flex flex-nowrap gap-4 px-8">
+          <div className="flex flex-nowrap gap-4 px-8 justify-center">
             <div className="bg-stone-900 w-2xs h-44 rounded-3xl"></div>
             <div className="bg-stone-900 w-2xs h-44 rounded-3xl"></div>
             <div className="bg-stone-900 w-2xs h-44 rounded-3xl"></div>
@@ -24,12 +35,38 @@ const page = () => {
             </button>
           </div>
         </div>
-        <aside className=" bg-black w-[213px] text-white rounded-l-2xl ">
-          <input type="text" placeholder="cari" className="" />
+        <aside className={`text-white  bg-chatbotsidebar flex-shrink-0 transform transition-all overflow-auto relative  overflow-y-auto duration-300 ease-in-out overflow-x-hidden ${isSidebarRightOpen ? "w-[213px] p-4" : "w-16 ml-36 p-2"}`}>
+          {isSidebarRightOpen ? (
+            <>
+              <div className="flex">
+                <IoMdExit size={24} onClick={toggleSidebar} className="text-gray-400 absolute top-6 left-4 cursor-pointer" />
+                <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Sign In</button>
+              </div>
+
+              <div className="flex flex-wrap mt-20">
+                <div className="mr-6 my-3">
+                  <input type="text" placeholder="cari" className="p-2 rounded-2xl shadow-2xl border-2 border-none focus:outline-none focus:ring-2 focus:ring-slate-300 transition duration-300 bg-gray-500/20 w-44" />
+                </div>
+                <div className="flex my-3 ml-2 transition-transform duration-300 hover:scale-105 cursor-pointer">
+                  <PiNotePencil size={24} /> <span className="pl-3 font-semibold text-lg ">Obrolan Baru</span>
+                </div>
+                <div className="flex my-3 ml-2 transition-transform duration-300 hover:scale-105 cursor-pointer">
+                  <VscHistory size={24} /> <span className="pl-3 font-semibold text-lg ">Riwayat</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col ml-3">
+              <FaBars size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
+              <MdContentPasteSearch size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
+              <PiNotePencil size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
+              <VscHistory size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
+            </div>
+          )}
         </aside>
       </section>
     </>
   );
 };
 
-export default page;
+export default Page;
