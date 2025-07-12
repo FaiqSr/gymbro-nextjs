@@ -15,12 +15,8 @@ const ChatBotPage = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
   return (
-    <section className="flex h-screen dark:bg-gradient-to-br dark:from-red-700 dark:via-black dark:to-red-700 ">
-      <div
-        className={`text-center p-4 relativ ${
-          isSidebarRightOpen ? "max-w-4xl" : " w-[896px]"
-        }  mx-auto`}
-      >
+    <section className="flex h-screen dark:bg-gradient-to-br dark:from-red-700 dark:via-black dark:to-red-700 w-full">
+      <div className={`text-center p-4 relativ ${isSidebarRightOpen ? "max-w-4xl" : " w-[896px]"}  mx-auto`}>
         <div className="mb-5 mt-2">
           <img src="/logo.png" alt="logo" className="mx-auto" width={155} />
           <h1 className="text-4xl font-bold text-red-500 drop-shadow-[0_0_6px_rgba(255,100,100,0.8)]">
