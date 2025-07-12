@@ -19,8 +19,12 @@ const ChatBotPage = () => {
       <div className={`text-center p-4 relativ ${isSidebarRightOpen ? "max-w-4xl" : " w-[896px]"}  mx-auto`}>
         <div className="mb-5 mt-2">
           <img src="/logo.png" alt="logo" className="mx-auto" width={155} />
-          <h1 className="text-4xl font-bold text-red-500 drop-shadow-[0_0_6px_rgba(255,100,100,0.8)]">Selamat Datang</h1>
-          <p className="py-3 font-semibold">Tanyakan apa saja mengenai latihan Gym sekarang!</p>
+          <h1 className="text-4xl font-bold text-red-500 drop-shadow-[0_0_6px_rgba(255,100,100,0.8)]">
+            Selamat Datang
+          </h1>
+          <p className="py-3 font-semibold">
+            Tanyakan apa saja mengenai latihan Gym sekarang!
+          </p>
         </div>
         <div className="flex flex-nowrap gap-4 px-8 justify-center">
           <div className="bg-stone-900 w-2xs h-44 rounded-3xl"></div>
@@ -28,38 +32,76 @@ const ChatBotPage = () => {
           <div className="bg-stone-900 w-2xs h-44 rounded-3xl"></div>
         </div>
         <div className="bg-black pb-16 pt-10 rounded-4xl max-w-3xl mx-auto mt-10 relative px-12">
-          <input type="text" placeholder="Tulis sesuatu..." className="w-full px-4 py-2 rounded-lg bg-abu text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-slate-300 transition duration-300" />
+          <input
+            type="text"
+            placeholder="Tulis sesuatu..."
+            className="w-full px-4 py-2 rounded-lg bg-abu text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-slate-300 transition duration-300"
+          />
           <button className="absolute bottom-5 left-14 cursor-pointer transition duration-300 transform hover:scale-110 ">
             <GrAdd size={27} />
           </button>
         </div>
       </div>
-      <aside className={`text-white  bg-chatbotsidebar flex-shrink-0 transform transition-all overflow-auto relative  overflow-y-auto duration-300 ease-in-out overflow-x-hidden ${isSidebarRightOpen ? "w-[213px] p-4" : "w-16 ml-36 p-2"}`}>
+      <aside
+        className={`text-white  bg-chatbotsidebar flex-shrink-0 transform transition-all overflow-auto relative  overflow-y-auto duration-300 ease-in-out overflow-x-hidden ${
+          isSidebarRightOpen ? "w-[213px] p-4" : "w-16 ml-36 p-2"
+        }`}
+      >
         {isSidebarRightOpen ? (
           <>
             <div className="flex">
-              <IoMdExit size={24} onClick={toggleSidebar} className="text-gray-400 absolute top-6 left-4 cursor-pointer" />
-              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Sign In</button>
+              <IoMdExit
+                size={24}
+                onClick={toggleSidebar}
+                className="text-gray-400 absolute top-6 left-4 cursor-pointer"
+              />
+              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">
+                Sign In
+              </button>
             </div>
 
             <div className="flex flex-wrap mt-20">
               <div className="mr-6 my-3">
-                <input type="text" placeholder="cari" className="p-2 rounded-2xl shadow-2xl border-2 border-none focus:outline-none focus:ring-2 focus:ring-slate-300 transition duration-300 bg-gray-500/20 w-44" />
+                <input
+                  type="text"
+                  placeholder="cari"
+                  className="p-2 rounded-2xl shadow-2xl border-2 border-none focus:outline-none focus:ring-2 focus:ring-slate-300 transition duration-300 bg-gray-500/20 w-44"
+                />
               </div>
               <div className="flex my-3 ml-2 transition-transform duration-300 hover:scale-105 cursor-pointer">
-                <PiNotePencil size={24} /> <span className="pl-3 font-semibold text-lg ">Obrolan Baru</span>
+                <PiNotePencil size={24} />{" "}
+                <span className="pl-3 font-semibold text-lg ">
+                  Obrolan Baru
+                </span>
               </div>
               <div className="flex my-3 ml-2 transition-transform duration-300 hover:scale-105 cursor-pointer">
-                <VscHistory size={24} /> <span className="pl-3 font-semibold text-lg ">Riwayat</span>
+                <VscHistory size={24} />{" "}
+                <span className="pl-3 font-semibold text-lg ">Riwayat</span>
               </div>
             </div>
           </>
         ) : (
           <div className="flex flex-col ml-3">
-            <FaBars size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
-            <MdContentPasteSearch size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
-            <PiNotePencil size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
-            <VscHistory size={24} className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105" onClick={toggleSidebar} />
+            <FaBars
+              size={24}
+              className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105"
+              onClick={toggleSidebar}
+            />
+            <MdContentPasteSearch
+              size={24}
+              className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105"
+              onClick={toggleSidebar}
+            />
+            <PiNotePencil
+              size={24}
+              className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105"
+              onClick={toggleSidebar}
+            />
+            <VscHistory
+              size={24}
+              className="text-gray-400 cursor-pointer my-5 transition-transform duration-300 hover:scale-105"
+              onClick={toggleSidebar}
+            />
           </div>
         )}
       </aside>
