@@ -12,7 +12,13 @@ const MainBackground = () => {
 
   if (!mounted) return null;
 
-  return <div className={` ${theme === "dark" ? "bg-[url(/images/gymBg.png)]" : "bg-white"} bg-no-repeat w-full `}></div>;
+  return (
+    <div
+      className={` ${
+        theme === "dark" ? "bg-[url(/images/gymBg.png)]" : "bg-white"
+      } bg-no-repeat w-full `}
+    ></div>
+  );
 };
 
 export default MainBackground;
