@@ -1,4 +1,3 @@
-"use client";
 import ChatBotPage from "@/components/latihan/ChatBotPage";
 import React, { useState } from "react";
 
