@@ -1,4 +1,4 @@
-import ChatBotPage from "@/components/latihan/ChatBotPage";
+import ChatBotPage from "@/components/latihan/chatbot/ChatBotPage";
 
 const Page = () => {
   return (

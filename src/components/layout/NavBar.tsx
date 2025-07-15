@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <>
-      <section className="flex lg:hidden fixed w-full justify-center bottom-0 border-t-2 border-slate-500 px-3 py-4">
+      <section className="flex lg:hidden fixed w-full justify-center bottom-0 border-t-2 bg-hitam border-slate-500 px-3 py-4 z-50">
         <nav className="w-full">
           <ul className="flex justify-around">
             <li className={`${checkRequest("/latihan")} flex items-center p-2`}>

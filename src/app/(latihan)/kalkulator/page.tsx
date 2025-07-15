@@ -1,8 +1,11 @@
-import MainBackground from "@/components/ui/MainBackground";
-import React from "react";
+import KalkulatorContainer from "@/components/latihan/kalkulator/KalkulatorContainer";
 
 const page = () => {
-  return <MainBackground />;
+  return (
+    <>
+      <KalkulatorContainer />
+    </>
+  );
 };
 
 export default page;
