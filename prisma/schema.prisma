@@ -15,12 +15,31 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique @db.VarChar(100)
-  email    String  @unique @db.VarChar(255)
-  name     String  @db.VarChar(150)
-  password String  @db.VarChar(255)
-  gender   String? @db.VarChar(10)
-  profile  String? @db.Text
-  token    String? @db.VarChar(255)
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(100)
+  email     String   @unique @db.VarChar(255)
+  name      String   @db.VarChar(150)
+  password  String   @db.VarChar(255)
+  gender    String?  @db.VarChar(10)
+  foto      String?  @db.Text
+  type      Type?
+  metode    Metode?
+  token     String?  @unique @db.VarChar(255)
+  createdAt DateTime @default(now())
+}
+
+enum Gender {
+  Laki_laki @map("l")
+  Perempuan @map("p")
+}
+
+enum Type {
+  strength
+  bulking
+  cutting
+}
+
+enum Metode {
+  fullBody   @map("Full Body")
+  upperLower @map("Upper-Lower")
 }
