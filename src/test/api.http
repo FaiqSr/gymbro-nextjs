@@ -1,5 +1,5 @@
 GET http://localhost:3000/api/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJjZWxzciIsImVtYWlsIjoiY2Vsc3IxM0BnbWFpbC5jb20iLCJpYXQiOjE3NTIyNjc1MzMsImV4cCI6MTc1MjI3MTEzM30.CAUhgCtIKLQTg3fe0ci8z0-iQL74qct-U__FClc2NKY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MjY1NjQ1MSwiZXhwIjoxNzUyNjYwMDUxfQ.MYy89EGff90qdHCpQ9bo9y_vF0hbP35otyiG7RUTJ_I
 Content-Type: application/json
 
 ###
@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
     "name": "Faiq Subhi Ramadlan",
-    "username": "celsr",
-    "email": "celsr13@gmail.com",
+    "username": "celsr1",
+    "email": "celsr131@gmail.com",
     "password": "passwordTest"
 }
 
@@ -20,8 +20,17 @@ POST http://localhost:3000/api/user/login
 Content-Type: application/json
 
 {
-    "usernameOrEmail": "celsr13@gmail.c",
+    "usernameOrEmail": "celsr131@gmail.com",
     "password": "passwordTest"
 }
 
 ###
+
+
+PUT http://localhost:3000/api/user
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MjY1NjQ1MSwiZXhwIjoxNzUyNjYwMDUxfQ.MYy89EGff90qdHCpQ9bo9y_vF0hbP35otyiG7RUTJ_I
+
+{
+    "username": "celsr1",
+}
