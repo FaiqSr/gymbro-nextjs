@@ -17,7 +17,6 @@ export async function POST(
   } catch (error) {
     return NextResponse.json(
       {
-        status: 400,
         message: "Bad Request",
         error: (error as Error).message,
       },
@@ -41,7 +40,6 @@ export async function POST(
   if (!user) {
     return NextResponse.json(
       {
-        status: 400,
         message: "Bad Request",
         error: "User not found",
       },
@@ -56,7 +54,6 @@ export async function POST(
   if (!userPasswordMatch) {
     return NextResponse.json(
       {
-        status: 400,
         message: "Bad Request",
         error: "Invalid Password",
       },
@@ -83,7 +80,6 @@ export async function POST(
 
     return NextResponse.json(
       {
-        status: 200,
         message: "Success",
         data: {
           username: user!.username,
