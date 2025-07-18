@@ -50,7 +50,7 @@ const ChatBotPage = () => {
           <>
             <div className="flex">
               <IoMdExit size={24} onClick={toggleSidebar} className="text-gray-400 absolute top-6 left-4 cursor-pointer" />
-              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Sign In</button>
+              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Daftar</button>
             </div>
 
             <div className="flex flex-wrap mt-20">
