@@ -1,8 +1,13 @@
-import MainBackground from "@/components/ui/MainBackground";
+import LatihanPage from "@/components/latihan/latihan/LatihanPage";
+
 import React from "react";
 
 const page = () => {
-  return <MainBackground />;
+  return (
+    <>
+      <LatihanPage />;
+    </>
+  );
 };
 
 export default page;
