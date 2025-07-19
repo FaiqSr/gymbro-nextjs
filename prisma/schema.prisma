@@ -44,3 +44,14 @@ enum Metode {
   fullBody   @map("Full Body")
   upperLower @map("Upper-Lower")
 }
+
+model ChatTitle {
+  id    Int    @id @default(autoincrement())
+  title String @db.VarChar(255)
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  value     String   @db.Text
+  createdAt DateTime @default(now())
+}
