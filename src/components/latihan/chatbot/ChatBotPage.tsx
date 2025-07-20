@@ -7,6 +7,12 @@ import { PiNotePencil } from "react-icons/pi";
 import { VscHistory } from "react-icons/vsc";
 import { MdContentPasteSearch } from "react-icons/md";
 import Image from "next/image";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const ChatBotPage = () => {
   const [isSidebarRightOpen, setIsSidebarRightOpen] = useState(false);
@@ -16,7 +22,7 @@ const ChatBotPage = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
   return (
-    <section className="flex min-h-screen dark:bg-gradient-to-br dark:from-red-700 dark:via-black  dark:to-red-700 w-full">
+    <section className={`flex min-h-screen dark:bg-gradient-to-br dark:from-red-700 dark:via-black  dark:to-red-700 w-full ${poppins.className}`}>
       <div className={`text-center pt-6  lg:ml-64 relative ${isSidebarRightOpen ? "lg:max-w-4xl block max-w-fit" : "lg:w-[896px]"} mx-auto`}>
         <div className="mb-5 mt-2">
           <Image src="/logo.png" alt="logo" className="mx-auto" width={155} height={500} />
@@ -44,7 +50,7 @@ const ChatBotPage = () => {
           <>
             <div className="flex">
               <IoMdExit size={24} onClick={toggleSidebar} className="text-gray-400 absolute top-6 left-4 cursor-pointer" />
-              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Sign In</button>
+              <button className="border-1 py-2 bg-gray-500/20 rounded-3xl w-[130] absolute right-5 cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">Daftar</button>
             </div>
 
             <div className="flex flex-wrap mt-20">

@@ -37,6 +37,8 @@ export const GET = async (): Promise<
       message: "Success",
       data: {
         username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         foto: user.foto,
         type: user.type,
