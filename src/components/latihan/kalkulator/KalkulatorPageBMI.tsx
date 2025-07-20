@@ -1,51 +1,52 @@
-import { IoIosFemale, IoIosMale } from "react-icons/io";
+import { IoMdMale, IoMdFemale } from "react-icons/io";
+
 const KalkulatorPageBMI = ({ className }: { className: string }) => {
   return (
-    <div className={`flex flex-col lg:flex-row justify-center items-center w-full gap-4 md:gap-8 ${className}`}>
-      <div className="mx-0 md:mx-4 border-none rounded-2xl my-4 md:my-5 bg-abutua w-full lg:w-1/2">
-        <div className="text-center my-4 px-2">
-          <h1 className="text-2xl md:text-[32px] font-semibold">BMI</h1>
-          <p className="text-sm md:text-[16px] mx-2 md:mx-4 text-abu-abu">Ingin tahu apakah berat badan Anda ideal? Masukkan tinggi dan berat badan untuk cek BMI</p>
+    <div className={`flex flex-col xl:flex-row gap-4 px-3 w-full bg-abutua rounded-3xl ${className}`}>
+      <div className="border-none my-4  lg:w-[620px] max-w-full mx-auto h-[558px] lg:h-[628px] px-4 ">
+        <div className="text-center my-4 px-2 lg:px-6">
+          <h1 className="text-[28px] font-semibold lg:text-3xl">BMI</h1>
+          <p className="text-sm lg:text-[15px] sm:text-[16px] lg:text-center text-abu-abu">Ingin tahu apakah berat badan Anda ideal? Masukkan tinggi dan berat badan untuk cek BMI</p>
         </div>
 
-        <div className="flex flex-col justify-center my-4 md:my-6 items-center px-4">
-          <div className="w-full max-w-[340px]">
-            <h2 className="text-lg md:text-[20px] text-white font-semibold mb-3">Jenis Kelamin</h2>
-            <div className="flex relative bg-white rounded-3xl w-full max-w-[340px] h-12 md:h-[48px]">
-              <div className="absolute left-2 top-1 hover:bg-teal-500/70 rounded-3xl w-[165px] h-[40px] py-2">
-                <button className="cursor-pointer text-sm md:text-[16px] font-semibold flex px-10 items-center gap-1">
-                  <IoIosMale size={20} className="text-iconMale" />
-                  <span className="text-abutua">Pria</span>
+        <div className="flex flex-col justify-center my-4 items-center">
+          <div className="w-full max-w-full lg:max-w-[460px] border-none">
+            <h2 className="text-sm  text-white font-semibold mb-3 lg:text-[18px]">Jenis Kelamin</h2>
+            <div className="flex  bg-white rounded-3xl w-full h-[33px] lg:w-full lg:h-[39px]">
+              <div className=" cursor-pointer hover:bg-teal-500/70 rounded-3xl  pt-1 lg:py-2 w-1/2 lg:pl-3">
+                <button className="cursor-pointer text-sm  font-semibold flex gap-2 pl-6 items-center">
+                  <IoMdMale size={30} className="text-iconMale" />
+                  <span className="text-abutua lg:text-xl text-[15px]">Pria</span>
                 </button>
               </div>
-              <div className="absolute right-2 rounded-3xl hover:bg-teal-500/70 w-[165px] h-[40px]  py-2 top-1">
-                <button className="cursor-pointer text-sm md:text-[16px] font-semibold flex items-center px-10 gap-1">
-                  <IoIosFemale size={20} className="text-iconFemale" />
-                  <span className="text-abutua">Wanita</span>
+              <div className=" cursor-pointer rounded-3xl hover:bg-teal-500/70 pt-1 lg:py-2 w-1/2">
+                <button className="cursor-pointer text-sm  font-semibold flex gap-2 items-center pl-6 lg:pl-3">
+                  <IoMdFemale size={30} className="text-iconFemale" />
+                  <span className="text-abutua lg:text-xl text-lg text-[15px]">Wanita</span>
                 </button>
               </div>
             </div>
           </div>
-          <div className="w-full max-w-[340px] mt-4">
-            <h2 className="text-lg md:text-[20px] text-white font-semibold mb-3">Umur</h2>
-            <input type="text" name="umur" placeholder="Tahun" className="bg-white placeholder:text-right placeholder:mr-2 md:placeholder:mr-5 text-black rounded-3xl w-full h-12 md:h-[48px] px-4" />
+          <div className="w-full max-w-full lg:max-w-[460px]  lg:mt-4 mt-3">
+            <h2 className="text-sm  text-white font-semibold mb-3 lg:text-[18px]">Umur</h2>
+            <input type="number" name="umur" placeholder="Tahun" className="bg-white placeholder:text-right  text-black rounded-3xl w-full h-[33px] lg:h-[39px] lg:w-full px-4 lg:text-lg text-[15px]" />
           </div>
-          <div className="flex flex-col sm:flex-row w-full max-w-[340px] gap-2 mt-4">
-            <div className="w-full sm:w-1/2">
-              <h2 className="text-lg md:text-[20px] text-white font-semibold mb-3">Berat(kg)</h2>
-              <input type="text" placeholder="Kg" className="bg-white placeholder:text-right text-black rounded-3xl w-full h-12 md:h-[48px] px-4" />
+          <div className="flex flex-col  w-full max-w-full  xl:flex-col lg:max-w-[460px] gap-2">
+            <div className="w-full mt-3 lg:mt-4">
+              <h2 className="text-sm text-white font-semibold mb-3 lg:text-[18px]">Berat(kg)</h2>
+              <input type="number" placeholder="Kg" className="text-sm   bg-white placeholder:text-right  text-black rounded-3xl w-full h-[33px] lg:w-full lg:h-[39px] px-4 lg:text-lg text-[15px]" />
             </div>
-            <div className="w-full sm:w-1/2">
-              <h2 className="text-lg md:text-[20px] text-white font-semibold mb-3">Tinggi(cm)</h2>
-              <input type="text" placeholder="cm" className="bg-white placeholder:text-right text-black rounded-3xl w-full h-12 md:h-[48px] px-4" />
+            <div className="w-full mt-3 lg:mt-4">
+              <h2 className="text-sm text-white font-semibold mb-3 lg:text-[18px]">Tinggi(cm)</h2>
+              <input type="number" placeholder="cm" className="bg-white  text-sm placeholder:text-right text-black rounded-3xl w-full h-[33px] lg:w-full lg:h-[39px]  px-4 lg:text-lg text-[15px]" />
             </div>
           </div>
-          <div className="w-full max-w-[180px] h-14 md:h-[62px] mt-4 md:mt-7">
-            <button className="bg-submit/70 px-6 md:px-10 py-2 md:py-4 rounded-4xl w-full h-full transition- duration-300 ease-in-out hover:bg-submit hover:scale-105 cursor-pointer text-sm md:text-base">HITUNG</button>
+          <div className=" h-[38px] my-8 max-w-full w-full lg:max-w-[460px] lg:mt-10">
+            <button className="bg-submit/70 px-7 rounded-4xl lg:w-full h-full transition-duration-300 ease-in-out hover:bg-submit hover:scale-105 cursor-pointer  text-[16px] w-full">HITUNG</button>
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-1/2 h-64 md:h-auto bg-black/30 rounded-2xl p-4 flex items-center justify-center">
+      <div className="w-full lg:w-[580px] h-[548px] xl:h-[628px] my-4 mx-auto bg-black/30 rounded-2xl p-4 flex items-center justify-center">
         <p className="text-white">GRAFIK</p>
       </div>
     </div>
