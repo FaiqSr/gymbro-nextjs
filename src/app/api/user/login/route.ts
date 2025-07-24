@@ -17,7 +17,7 @@ export async function POST(
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Bad Request",
+        message: "User not recognized",
         error: (error as Error).message,
       },
       { status: 400 }
@@ -40,7 +40,7 @@ export async function POST(
   if (!user) {
     return NextResponse.json(
       {
-        message: "Bad Request",
+        message: "User not recognized",
         error: "User not found",
       },
       { status: 400 }
@@ -54,13 +54,13 @@ export async function POST(
   if (!userPasswordMatch) {
     return NextResponse.json(
       {
-        message: "Bad Request",
+        message: "User not recognized",
         error: "Invalid Password",
       },
       { status: 400 }
     );
   } else {
-    const secret = process.env.JWT_SECRET || "your_jwt_secret";
+    const secret = process.env.JWT_SECRET || "token_secret";
     const expiresIn = "1h";
 
     const token = jwt.sign(

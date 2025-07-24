@@ -1,7 +1,16 @@
-import React from "react";
+import LoginForm from "@/components/home/login/LoginForm";
 
-const page = () => {
-  return <div>page</div>;
+const Page = () => {
+  return (
+    <>
+      <section
+        style={{ backgroundImage: 'url("/images/gymBg.png")' }}
+        className="bg-no-repeat bg-cover min-h-svh flex justify-center items-center flex-col"
+      >
+        <LoginForm />
+      </section>
+    </>
+  );
 };
 
-export default page;
+export default Page;
