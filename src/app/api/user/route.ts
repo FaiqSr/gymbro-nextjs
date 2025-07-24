@@ -14,8 +14,18 @@ import { NextResponse } from "next/server";
 export const GET = async (): Promise<
   NextResponse<WebResponse<UserCurrentResponse>>
 > => {
-  const token = (await headers()).get("authorization");
+  let token = (await headers()).get("authorization");
+  if (!token || !token.startsWith("Bearer ")) {
+    return NextResponse.json<WebResponse<UserCurrentResponse>>(
+      {
+        message: "Unauthorized",
+        error: "Authorization header is missing or invalid",
+      },
+      { status: 401 }
+    );
+  }
 
+  token = token.split(" ")[1];
   const user = await prisma.user.findFirst({
     where: {
       token: token,
@@ -37,6 +47,8 @@ export const GET = async (): Promise<
       message: "Success",
       data: {
         username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         foto: user.foto,
         type: user.type,

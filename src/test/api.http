@@ -1,5 +1,5 @@
 GET http://localhost:3000/api/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MjY1NjQ1MSwiZXhwIjoxNzUyNjYwMDUxfQ.MYy89EGff90qdHCpQ9bo9y_vF0hbP35otyiG7RUTJ_I
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI4NzE4MiwiZXhwIjoxNzUzMjkwNzgyfQ.vsoc38SiJADmydp4M6YjFRN22dQSKRdZZF2oXLByYfg
 Content-Type: application/json
 
 ###
@@ -8,7 +8,7 @@ POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
 {
-    "name": "Faiq Subhi Ramadlan",
+    "firstName": "Faiq Subhi Ramadlan",
     "username": "celsr1",
     "email": "celsr131@gmail.com",
     "password": "passwordTest"
@@ -29,8 +29,10 @@ Content-Type: application/json
 
 PUT http://localhost:3000/api/user
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MjY1NjQ1MSwiZXhwIjoxNzUyNjYwMDUxfQ.MYy89EGff90qdHCpQ9bo9y_vF0hbP35otyiG7RUTJ_I
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJjZWxzcjEiLCJlbWFpbCI6ImNlbHNyMTMxQGdtYWlsLmNvbSIsImlhdCI6MTc1MjgyMDcxOSwiZXhwIjoxNzUyODI0MzE5fQ.tkP2Wdyzs3zc9Fn7KfXjKR7vwFWR_Gxcc0_QsYO1LgQ
 
 {
-    "username": "celsr1",
+    "gender" : "p",
+    "firstName": "Faiq",
+    "lastName": "Subhi Ramadlan"
 }

@@ -11,7 +11,8 @@ export type UserLoginRequest = {
 };
 
 export type UserRegisterRequest = {
-  name: string;
+  firstName: string;
+  lastName?: string;
   username: string;
   email: string;
   password: string;
@@ -24,6 +25,8 @@ export type UserRegisterResponse = {
 
 export type UserCurrentResponse = {
   username: string;
+  firstName: string;
+  lastName?: string | null;
   email: string;
   token: string | null;
   foto: string | null;
@@ -34,7 +37,8 @@ export type UserCurrentResponse = {
 
 export type UserUpdateRequest = {
   username?: string;
-  name?: string;
+  firstName?: string;
+  lastName?: string;
   email?: string;
   password?: string;
   gender?: string;

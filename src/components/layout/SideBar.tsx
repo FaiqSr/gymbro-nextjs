@@ -1,66 +1,103 @@
-"use client"; // Tambahkan ini di baris paling atas file
+"use client";
 
 import Link from "next/link";
-import React from "react";
-import { MdFitnessCenter, MdChat, MdCalculate, MdAccountCircle } from "react-icons/md";
-import { Concert_One } from "next/font/google";
-import { usePathname } from "next/navigation";
-import { AiOutlineLogout } from "react-icons/ai";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import React from "react";
+import {
+  MdFitnessCenter,
+  MdChat,
+  MdCalculate,
+  MdAccountCircle,
+} from "react-icons/md";
+import { AiOutlineLogout } from "react-icons/ai";
+import { Poppins } from "next/font/google";
 
-const concertOne = Concert_One({ weight: "400" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+});
+
+const mainNavItems = [
+  { href: "/latihan", icon: MdFitnessCenter, label: "Latihan" },
+  { href: "/chatbot", icon: MdChat, label: "Chatbot" },
+  { href: "/kalkulator", icon: MdCalculate, label: "Kalkulator" },
+];
 
 const SideBar = () => {
   const pathname = usePathname();
 
-  const getBorderColor = (path: string) => {
-    return pathname === path ? "rounded-md bg-abu/20 pl-2 pr-10 py-2 shadow-xl/40 border-1 dark:shadow-coklat dark:text-white" : "border-white";
-  };
+  const getLinkClass = (path: string, isProfile = false) => {
+    const isActive = pathname.startsWith(path);
 
-  const borderColorprofile = (path: string) => {
-    return pathname === path ? "rounded-full bg-abu/20  shadow-xl/40 border-1 dark:shadow-coklat dark:text-white" : "border-white";
+    const baseClasses = `flex items-center gap-4 w-full p-3 transition-all duration-300 hover:bg-white/10 hover:text-white rounded-lg`;
+
+    const activeClasses = `bg-white/10 text-white font-semibold rounded-lg`;
+
+    const inactiveClasses = `text-gray-400`;
+
+    const profileClasses = isProfile ? "flex-col rounded-full" : "rounded-lg";
+
+    return `${baseClasses} ${profileClasses} ${
+      isActive ? activeClasses : inactiveClasses
+    }`;
   };
 
   return (
-    <aside className={`min-w-64 max-w-64 hidden fixed lg:flex flex-col gap-2 items-center min-h-svh px-5 border-r-2 border-red-900  bg-[url(/Ellipse.png)] bg-no-repeat bg-top-left dark:bg-merahhitam`}>
-      <section>
-        <nav>
-          <Link href={`/`}>
-            <Image src="/Group.png" width={140} height={200} className="pr-4" />
-          </Link>
-        </nav>
-      </section>
-      <section className="w-full">
-        <nav className="">
-          <ul className={`flex flex-col gap-5 font-semibold text-lg dark:text-white ${concertOne.className}`}>
-            <li className={`${getBorderColor("/latihan")} pl-2 pr-10 py-3 hover:cursor-pointer `}>
-              <Link href={`/latihan`} className={`flex gap-4 items-center `}>
-                <MdFitnessCenter size={24} className="dark:text-coklat" /> LATIHAN
-              </Link>
-            </li>
-            <li className={`${getBorderColor("/chatbot")} pl-2 pr-10 py-3 hover:cursor-pointer`}>
-              <Link href={`/chatbot`} className={`flex gap-4 items-center`}>
-                <MdChat size={24} className="dark:text-coklat" /> CHATBOT
-              </Link>
-            </li>
-            <li className={`${getBorderColor("/kalkulator")} pl-2 pr-10 py-3 hover:cursor-pointer`}>
-              <Link href={`/kalkulator`} className={`flex gap-4 items-center`}>
-                <MdCalculate size={24} className="dark:text-coklat " /> KALKULATOR
-              </Link>
-            </li>
-            <li className={`${borderColorprofile("/profile")} flex flex-col items-center hover:cursor-pointer`}>
-              <Link href={`/profile`} className={``}>
-                <MdAccountCircle size={65} className="dark:text-coklat" /> PROFILE
-              </Link>
-            </li>
-            <li className="pl-2 pr-10 mt-28 hover:cursor-pointer active:bg-orange-900 active:rounded-2xl">
-              <Link href={`/login`} className={`flex gap-4 items-center`}>
-                <AiOutlineLogout size={24} className="dark:text-coklat" /> LOGOUT
-              </Link>
-            </li>
+    <aside
+      className={`min-w-64 max-w-64 hidden lg:flex flex-col min-h-screen p-4 border-r border-white/10 bg-merahhitam fixed top-0 left-0`}
+    >
+      <div className="py-4 mb-4">
+        <Link
+          href={`/`}
+          className="flex justify-center hover:opacity-80 transition-opacity duration-200"
+        >
+          <Image
+            src={`/images/Group.png`}
+            width={140}
+            height={200}
+            alt="Logo"
+          />
+        </Link>
+      </div>
+
+      <div className="flex flex-col justify-between h-full">
+        <nav className={`w-full ${poppins.className}`}>
+          <ul className="flex flex-col gap-3 text-lg">
+            {mainNavItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={getLinkClass(item.href)}>
+                  <item.icon
+                    size={24}
+                    className={
+                      pathname.startsWith(item.href) ? "text-red-400" : ""
+                    }
+                  />
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
-      </section>
+
+        <div className="flex flex-col gap-3 items-center py-2">
+          <Link href="/profile" className={getLinkClass("/profile", true)}>
+            <MdAccountCircle
+              size={50}
+              className={pathname.startsWith("/profile") ? "text-red-400" : ""}
+            />
+            <span className="text-sm">Profil</span>
+          </Link>
+
+          <Link
+            href="/login"
+            className="flex items-center gap-4 w-full p-3 rounded-xl text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300"
+          >
+            <AiOutlineLogout size={24} />
+            <span>Keluar</span>
+          </Link>
+        </div>
+      </div>
     </aside>
   );
 };

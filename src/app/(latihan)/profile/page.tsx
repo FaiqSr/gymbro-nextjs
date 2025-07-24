@@ -1,8 +1,7 @@
-import React from "react";
-import MainBackground from "@/components/ui/MainBackground";
+import ProfileContainer from "@/components/latihan/profile/ProfileContainer";
 
 const page = () => {
-  return <MainBackground />;
+  return <ProfileContainer />;
 };
 
 export default page;

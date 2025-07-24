@@ -1,46 +1,56 @@
 "use client";
-import Link from "next/link";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { MdFitnessCenter, MdChat, MdCalculate, MdAccountCircle } from "react-icons/md";
+import {
+  MdFitnessCenter,
+  MdChat,
+  MdCalculate,
+  MdAccountCircle,
+} from "react-icons/md";
 
 const NavBar = () => {
-  const param = usePathname();
+  const pathname = usePathname();
 
-  function checkRequest(path: string) {
-    return path == param ? "border-2 rounded-xl border-blue-500 text-blue-400 transition-colors duration-300 ease-in-out" : "dark:text-slate-500 transition-colors duration-300 ease-in-out";
-  }
+  // Daftar menu untuk kemudahan mapping dan pengelolaan
+  const navItems = [
+    { href: "/latihan", icon: MdFitnessCenter, label: "Latihan" },
+    { href: "/chatbot", icon: MdChat, label: "Chatbot" },
+    { href: "/kalkulator", icon: MdCalculate, label: "Kalkulator" },
+    { href: "/profile", icon: MdAccountCircle, label: "Profil" },
+  ];
+
+  const getLinkClass = (path: string) => {
+    // Mengecek apakah path saat ini adalah path link atau sub-pathnya
+    const isActive = pathname === path || pathname.startsWith(`${path}/`);
+
+    // Kelas untuk ikon dan teks
+    const baseClass =
+      "flex flex-col items-center gap-1 transition-all duration-300 ease-in-out";
+    const activeClass =
+      "text-red-500 scale-110 drop-shadow-[0_0_4px_rgba(239,68,68,0.7)]";
+    const inactiveClass = "text-gray-400 hover:text-white";
+
+    return `${baseClass} ${isActive ? activeClass : inactiveClass}`;
+  };
 
   return (
-    <>
-      <section className="flex lg:hidden fixed w-full justify-center bottom-0 border-t-2 bg-hitam border-slate-500 px-3 py-4 z-50">
-        <nav className="w-full">
-          <ul className="flex justify-around">
-            <li className={`${checkRequest("/latihan")} flex items-center p-2`}>
-              <Link href={`/latihan`}>
-                <MdFitnessCenter size={50} />
+    // Menggunakan backdrop-blur untuk efek glassmorphism yang serasi dengan tema chatbot
+    <section className="flex lg:hidden fixed w-full justify-center bottom-0 border-t border-white/10 bg-black/50 backdrop-blur-lg z-50">
+      <nav className="w-full">
+        <ul className="flex justify-around items-center py-2">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className={getLinkClass(item.href)}>
+                <item.icon size={28} />
+                <span className="text-xs font-medium">{item.label}</span>
               </Link>
             </li>
-            <li className={`${checkRequest("/chatbot")} flex items-center p-2`}>
-              <Link href={`/chatbot`}>
-                <MdChat size={50} />
-              </Link>
-            </li>
-            <li className={`${checkRequest("/kalkulator")} flex items-center p-2`}>
-              <Link href={`/kalkulator`}>
-                <MdCalculate size={50} />
-              </Link>
-            </li>
-            <li className={`${checkRequest("/profile")} flex items-center p-2`}>
-              <Link href={`/profile`}>
-                <MdAccountCircle size={50} />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </section>
-    </>
+          ))}
+        </ul>
+      </nav>
+    </section>
   );
 };
 

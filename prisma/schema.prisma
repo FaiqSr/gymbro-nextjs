@@ -18,7 +18,8 @@ model User {
   id        Int      @id @default(autoincrement())
   username  String   @unique @db.VarChar(100)
   email     String   @unique @db.VarChar(255)
-  name      String   @db.VarChar(150)
+  firstName String   @db.VarChar(150)
+  lastName  String?  @db.VarChar(150)
   password  String   @db.VarChar(255)
   gender    String?  @db.VarChar(10)
   foto      String?  @db.Text
@@ -42,4 +43,15 @@ enum Type {
 enum Metode {
   fullBody   @map("Full Body")
   upperLower @map("Upper-Lower")
+}
+
+model ChatTitle {
+  id    Int    @id @default(autoincrement())
+  title String @db.VarChar(255)
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  value     String   @db.Text
+  createdAt DateTime @default(now())
 }
