@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-coklat: #917a36;
+  --color-hitam: #191919;
+  --color-abu: #8b8b8b;
+  --color-merahhitam: #110b0b;
+  --color-abutua: #202020;
+  --color-abu-abu: #707070;
+  --color-submit: #4a4654;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide-right {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.slide-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-left {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.slide-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+} 
