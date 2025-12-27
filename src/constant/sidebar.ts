@@ -16,5 +16,5 @@ export const mainNavItems: NavItem[] = [
   { href: "/latihan", icon: MdFitnessCenter, label: "Latihan" },
   { href: "/chatbot", icon: MdChat, label: "Chatbot" },
   { href: "/kalkulator", icon: MdCalculate, label: "Kalkulator" },
-  { href: "/profile", icon: MdAccountCircle, label: "profil" },
+  { href: "/profile", icon: MdAccountCircle, label: "Profile" },
 ];
