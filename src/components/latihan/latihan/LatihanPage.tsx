@@ -1,71 +1,58 @@
 import { Poppins } from "next/font/google";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoMdMale } from "react-icons/io";
-import Image from "next/image";
 import LatihanMulaiPage from "./LatihanMulaiPage";
+import LatihanHeader from "./LatihanHeader";
+import StatsCard from "./StatsCard";
+import NotificationCard from "./NotificationCard";
+import ActivityChart from "./ActivityChart";
+import RecentWorkoutsCard from "./RecentWorkoutsCard";
+import ProfileCard from "./ProfileCard";
+import CalendarCard from "./CalendarCard";
+import { stats, recentWorkouts } from "@/constant/latihan";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const LatihanPage = () => {
+  const weekActivityData = [65, 85, 72, 90, 78, 88, 95];
+
   return (
     <>
       <section
-        className={`w-full dark:bg-[url(/images/gymBg.png)] bg-no-repeat ${poppins.className}`}
+        className={`w-full min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black ${poppins.className}`}
       >
-        <div className="flex">
-          <div className="my-6 md:my-8 lg:my-12 mx-4 lg:mx-15 lg:ml-20 xl:ml-80">
-            <h1 className="text-2xl md:text-3xl lg:text-[32px] text-red-600 font-semibold">
-              Dashboard Latihan
-            </h1>
-            <div className="flex gap-16">
-              <p className="text-sm md:text-base lg:text-[20px] font-semibold text-abu mt-1 md:mt-2">
-                Halo ganteng! Latihan bareng Gymbro yuk
-              </p>
-              <p className="font-semibold mt-3">15 Juli 2025</p>
-            </div>
-            <div className=" flex flex-col gap-7">
-              <div className="w-[618px] h-[52px] bg-black/10  border rounded-3xl backdrop-blur-2xl pt-3 px-4 mt-5">
-                <span>Notifikasi pesan nutrisi atau pengingat minum</span>
-                <IoIosArrowDown
-                  size={30}
-                  className="bg-black/50 rounded-2xl cursor-pointer float-right"
-                />
-              </div>
-              <div className="w-[618px] h-[419px] bg-black/10  border rounded-3xl backdrop-blur-2xl pt-3 px-4 mt-5 ">
-                GRAFIK
-              </div>
-            </div>
+        <div className="relative overflow-hidden pt-8 pb-12">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="w-[436px] h-[704px] flex flex-col dark:bg-merahhitam">
-            <div className="flex mt-10 gap-7 mx-2">
-              <div className="flex border-1 py-2 px-5 rounded-4xl w-[150px] h-[55px] bg-ungu">
-                <div className="relative  pr-2">
-                  <Image
-                    src={`/images/Polygon.png`}
-                    width={150}
-                    height={100}
-                    alt="Logo"
-                  />
-                  <IoMdMale
-                    size={28}
-                    className="font-bold text-oren z-20 bottom-0 left-5 absolute"
-                  />
-                </div>
-                <span className="text-ungutua font-semibold mt-2">Pria</span>
-              </div>
-              <button className="border-1 py-2 bg-gray-500/20 rounded-4xl w-[150px] h-[55px] cursor-pointer transition-transform duration-300 hover:scale-105 active:bg-gray-200/20">
-                Daftar
-              </button>
+          <div className="relative px-4 lg:px-8 xl:px-12">
+            <LatihanHeader
+              title="Dashboard"
+              subtitle="Halo ganteng! Mari tingkatkan kebugaran mu hari ini"
+              date="28 Des 2025"
+            />
+            <StatsCard stats={stats} />
+          </div>
+        </div>
+
+        <div className="px-4 lg:px-8 xl:px-12 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-6">
+              <NotificationCard />
+              <ActivityChart weekData={weekActivityData} />
+              <RecentWorkoutsCard workouts={recentWorkouts} />
             </div>
-            <div className="w-[328px] h-[429px] bg-black ml-3 mt-9">
-              Kalender
+
+            <div className="space-y-6">
+              <ProfileCard />
+              <CalendarCard />
             </div>
           </div>
         </div>
+
         <LatihanMulaiPage />
       </section>
     </>
