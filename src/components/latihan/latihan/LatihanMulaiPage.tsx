@@ -1,13 +1,7 @@
-import { Poppins } from "next/font/google";
 import { exercises } from "@/constant/latihan";
 import SectionHeader from "./SectionHeader";
 import ExerciseGrid from "./ExerciseGrid";
 import TrainerCTA from "./TrainerCTA";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const LatihanMulaiPage = () => {
   return (
