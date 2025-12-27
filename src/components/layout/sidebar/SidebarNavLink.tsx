@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { IconType } from "react-icons";
+import { motion } from "framer-motion";
+import { hoverScale } from "@/lib/animations/variants";
 
 interface SidebarNavLinkProps {
   href: string;
@@ -22,15 +24,21 @@ export default function SidebarNavLink({
     : "text-gray-400";
 
   return (
-    <Link href={href} className={`${baseClasses} ${activeClasses}`}>
-      <Icon
-        size={24}
-        className={isActive ? "text-white" : "group-hover:text-red-400"}
-      />
-      <span className="font-medium">{label}</span>
-      {isActive && (
-        <div className="ml-auto w-1 h-6 bg-white rounded-full"></div>
-      )}
-    </Link>
+    <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+      <Link href={href} className={`${baseClasses} ${activeClasses}`}>
+        <Icon
+          size={24}
+          className={isActive ? "text-white" : "group-hover:text-red-400"}
+        />
+        <span className="font-medium">{label}</span>
+        {isActive && (
+          <motion.div
+            className="ml-auto w-1 h-6 bg-white rounded-full"
+            layoutId="activeIndicator"
+            transition={{ type: "spring", stiffness: 380, damping: 40 }}
+          ></motion.div>
+        )}
+      </Link>
+    </motion.div>
   );
 }
