@@ -1,13 +1,19 @@
 "use client";
-import Link from "next/link";
-import React, { useState, FormEvent, ChangeEvent } from "react";
-import Image from "next/image";
+import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { IoIosArrowForward } from "react-icons/io";
 
-interface ApiError {
-  message: string;
-}
+import AuthLayout from "./AuthLayout";
+import FormHeader from "./FormHeader";
+import FormInput from "./FormInput";
+import FormMessage from "./FormMessage";
+import FormSubmitButton from "./FormSubmitButton";
+import FormFooter from "./FormFooter";
+
+import { LOGIN_CONFIG, FORM_FIELDS, ROUTES } from "@/constant/auth";
 
 const LoginForm: React.FC = () => {
   const [usernameOrEmail, setUsernameOrEmail] = useState<string>("");
@@ -15,138 +21,107 @@ const LoginForm: React.FC = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const router = useRouter();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await axios.post("/api/user/login", {
-        usernameOrEmail,
-        password,
-      });
-
-      const { token } = response.data.data;
-      console.log("Login berhasil! Token:", token);
-
-      localStorage.setItem("authToken", token);
-      router.push("/latihan");
-    } catch (err) {
-      let errorMessage =
-        "Login gagal. Periksa kembali username dan password Anda.";
-
-      if (axios.isAxiosError(err)) {
-        const serverError = err.response?.data as ApiError;
-        if (serverError?.message) {
-          errorMessage = serverError.message;
-        }
-      }
-
-      console.error("Login gagal:", err);
-      setError(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center">
-      <section>
-        <Image src="/images/Logo.png" width={200} height={100} alt="Logo" />
-      </section>
+    <AuthLayout>
+      <motion.form
+        className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 shadow-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <FormHeader
+          title={LOGIN_CONFIG.title}
+          subtitle={LOGIN_CONFIG.subtitle}
+        />
 
-      <section className="border-2 w-96 h-fit px-10 text-center bg-white/50 rounded-lg py-4 pb-8 border-white">
-        <h1 className="text-2xl font-bold pt-2 pb-5">Sign In</h1>
+        {error && <FormMessage message={error} type="error" />}
 
-        {error && (
-          <div className="bg-red-100 text-red-700 px-4 py-3 rounded-lg relative mt-4 text-start">
-            <span className="block sm:inline">{error}</span>
-          </div>
-        )}
-        <div className="flex flex-col text-start py-3">
-          <label
-            htmlFor="usernameOrEmail"
-            className="mb-2 text-white font-semibold"
-          >
-            Username or Email
-          </label>
-          <input
-            type="text"
-            id="usernameOrEmail"
-            name="usernameOrEmail"
-            value={usernameOrEmail}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setUsernameOrEmail(e.target.value)
-            }
-            className="bg-slate-200 rounded-lg px-2 py-1"
-            required
-          />
-        </div>
+        <FormInput
+          id="usernameOrEmail"
+          label={FORM_FIELDS.login[0].label}
+          type={FORM_FIELDS.login[0].type}
+          placeholder={FORM_FIELDS.login[0].placeholder}
+          value={usernameOrEmail}
+          onChange={(e) => setUsernameOrEmail(e.target.value)}
+          required
+          delay={FORM_FIELDS.login[0].delay}
+        />
 
-        <div className="flex flex-col text-start py-3">
-          <label htmlFor="password" className="my-2 text-white font-semibold">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
-            className="bg-slate-200 rounded-lg px-2 py-2"
-            required
-          />
-        </div>
+        <FormInput
+          id="password"
+          label={FORM_FIELDS.login[1].label}
+          type={FORM_FIELDS.login[1].type}
+          placeholder={FORM_FIELDS.login[1].placeholder}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          delay={FORM_FIELDS.login[1].delay}
+          showToggle={FORM_FIELDS.login[1].hasToggle}
+          showPassword={showPassword}
+          onTogglePassword={() => setShowPassword(!showPassword)}
+          icon={showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+        />
 
-        <div className="text-end py-2">
-          <p className="font-semibold">
-            Lupa password?{" "}
-            <Link href={"/reset"} className="text-kuning">
-              reset
-            </Link>
-          </p>
-        </div>
-
-        <div className="text-start">
-          <input
-            type="checkbox"
-            id="ingat"
-            name="ingat"
-            checked={rememberMe}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setRememberMe(e.target.checked)
-            }
-          />
-          <label htmlFor="ingat" className="ml-2">
-            Ingat saya?
-          </label>
-        </div>
-      </section>
-
-      <section className="mt-5">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="bg-kuning px-5 py-2 rounded-lg w-40 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        <motion.div
+          className="flex items-center justify-between mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
         >
-          {isLoading ? "Loading..." : "Sign In"}
-        </button>
-      </section>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="ingat"
+              name="ingat"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="w-4 h-4 rounded border-slate-600 bg-slate-700/50 cursor-pointer accent-red-500"
+            />
+            <label
+              htmlFor="ingat"
+              className="ml-2 text-gray-400 text-sm cursor-pointer"
+            >
+              Ingat saya
+            </label>
+          </div>
+          <a
+            href={ROUTES.resetPassword}
+            className="text-red-500 hover:text-red-400 text-sm font-semibold transition-colors"
+          >
+            Lupa password?
+          </a>
+        </motion.div>
 
-      <section className="mt-5">
-        <p className="text-white font-semibold">
-          Belum punya akun?{" "}
-          <Link href={`/register`} className="text-kuning">
-            Daftar
-          </Link>
-        </p>
-      </section>
-    </form>
+        <FormSubmitButton
+          isLoading={isLoading}
+          text={LOGIN_CONFIG.submitText}
+          loadingText={LOGIN_CONFIG.loadingText}
+          icon={<IoIosArrowForward size={20} />}
+        />
+
+        <motion.div
+          className="my-6 flex items-center gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-slate-700"></div>
+          <p className="text-gray-500 text-xs">atau</p>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-slate-700"></div>
+        </motion.div>
+
+        <FormFooter
+          question="Belum punya akun?"
+          linkText="Daftar sekarang"
+          linkHref={ROUTES.register}
+          termsText="Dengan masuk, Anda setuju dengan"
+        />
+      </motion.form>
+    </AuthLayout>
   );
 };
 

@@ -1,104 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import React from "react";
-import {
-  MdFitnessCenter,
-  MdChat,
-  MdCalculate,
-  MdAccountCircle,
-} from "react-icons/md";
-import { AiOutlineLogout } from "react-icons/ai";
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
-
-const mainNavItems = [
-  { href: "/latihan", icon: MdFitnessCenter, label: "Latihan" },
-  { href: "/chatbot", icon: MdChat, label: "Chatbot" },
-  { href: "/kalkulator", icon: MdCalculate, label: "Kalkulator" },
-];
+import { motion } from "framer-motion";
+import SidebarHeader from "./sidebar/SidebarHeader";
+import SidebarNav from "./sidebar/SidebarNav";
+import SidebarFooter from "./sidebar/SidebarFooter";
+import { mainNavItems } from "@/constant/sidebar";
+import { slideInFromLeft, fadeIn } from "@/lib/animations/variants";
 
 const SideBar = () => {
-  const pathname = usePathname();
-
-  const getLinkClass = (path: string, isProfile = false) => {
-    const isActive = pathname.startsWith(path);
-
-    const baseClasses = `flex items-center gap-4 w-full p-3 transition-all duration-300 hover:bg-white/10 hover:text-white rounded-lg`;
-
-    const activeClasses = `bg-white/10 text-white font-semibold rounded-lg`;
-
-    const inactiveClasses = `text-gray-400`;
-
-    const profileClasses = isProfile ? "flex-col rounded-full" : "rounded-lg";
-
-    return `${baseClasses} ${profileClasses} ${
-      isActive ? activeClasses : inactiveClasses
-    }`;
-  };
-
   return (
-    <aside
-      className={`min-w-64 max-w-64 hidden lg:flex flex-col min-h-screen p-4 border-r border-white/10 bg-merahhitam fixed top-0 left-0`}
+    <motion.aside
+      className="min-w-64 max-w-64 hidden lg:flex flex-col min-h-screen p-4 border-r border-slate-700/50 bg-gradient-to-b from-slate-900 to-slate-950 fixed top-0 left-0 backdrop-blur-xl"
+      initial="hidden"
+      animate="visible"
+      variants={slideInFromLeft}
     >
-      <div className="py-4 mb-4">
-        <Link
-          href={`/`}
-          className="flex justify-center hover:opacity-80 transition-opacity duration-200"
+      <div className="absolute inset-0 pointer-events-none opacity-5">
+        <div className="absolute top-0 right-0 w-48 h-48 bg-red-600 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-600 rounded-full blur-3xl"></div>
+      </div>
+
+      <motion.div
+        className="relative z-10 flex flex-col h-full gap-[335px]"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
         >
-          <Image
-            src={`/images/Group.png`}
-            width={140}
-            height={200}
-            alt="Logo"
-          />
-        </Link>
-      </div>
-
-      <div className="flex flex-col justify-between h-full">
-        <nav className={`w-full ${poppins.className}`}>
-          <ul className="flex flex-col gap-3 text-lg">
-            {mainNavItems.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={getLinkClass(item.href)}>
-                  <item.icon
-                    size={24}
-                    className={
-                      pathname.startsWith(item.href) ? "text-red-400" : ""
-                    }
-                  />
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex flex-col gap-3 items-center py-2">
-          <Link href="/profile" className={getLinkClass("/profile", true)}>
-            <MdAccountCircle
-              size={50}
-              className={pathname.startsWith("/profile") ? "text-red-400" : ""}
-            />
-            <span className="text-sm">Profil</span>
-          </Link>
-
-          <Link
-            href="/login"
-            className="flex items-center gap-4 w-full p-3 rounded-xl text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300"
-          >
-            <AiOutlineLogout size={24} />
-            <span>Keluar</span>
-          </Link>
-        </div>
-      </div>
-    </aside>
+          <SidebarHeader logo="/images/Group.png" />
+          <SidebarNav items={mainNavItems} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <SidebarFooter />
+        </motion.div>
+      </motion.div>
+    </motion.aside>
   );
 };
 
